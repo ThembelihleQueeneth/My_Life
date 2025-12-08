@@ -34,7 +34,7 @@ export const Login = () => {
         <button 
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3.5 rounded-xl font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 flex justify-center items-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105"
+          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3.5 rounded-xl font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 flex justify-center items-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
