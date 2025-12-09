@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import { Link } from "react-router-dom";
+
+
 
 export const Login = () => {
   const [isHovered, setIsHovered] = useState(false)
@@ -51,9 +54,9 @@ export const Login = () => {
         {/* Footer text */}
         <p className="text-center text-xs text-gray-500 mt-8">
           By signing in, you agree to our{' '}
-          <a href="#" className="text-orange-500 hover:text-orange-600 underline">Terms of Service</a>
+          <Link to="/dashboard" className="text-orange-500 hover:text-orange-600 underline">Terms of Service</Link>
           {' '}and{' '}
-          <a href="#" className="text-orange-500 hover:text-orange-600 underline">Privacy Policy</a>
+          <Link to="/dashboard" className="text-orange-500 hover:text-orange-600 underline">Privacy Policy</Link>
         </p>
       </div>
     </div>
