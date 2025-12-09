@@ -34,6 +34,7 @@ export const Login = () => {
         </p>
 
         {/* Facebook Login Button */}
+        <Link to="/dashboard">
         <button 
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -50,6 +51,7 @@ export const Login = () => {
           </svg>
           Sign in with Facebook
         </button>
+        </Link>
 
         {/* Footer text */}
         <p className="text-center text-xs text-gray-500 mt-8">

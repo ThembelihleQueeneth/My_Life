@@ -46,40 +46,60 @@ export default function Sidebar() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <aside className="w-64 bg-gradient-to-b from-white to-blue-50/30 h-screen p-6 shadow-lg border-r border-specLightBlue/50 flex flex-col">
+    <aside className="w-64 bg-gradient-to-br from-white via-white to-blue-50/40 h-screen p-6 shadow-xl shadow-blue-100/30 backdrop-blur-sm flex flex-col">
       {/* Menu Header */}
-      <div className="mb-8">
-        <div className="flex items-center gap-2 mb-2">
-          <div className="w-8 h-1 bg-gradient-to-r from-specBlue to-blue-400 rounded-full"></div>
+      <div className="mb-10">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-specBlue to-blue-500 flex items-center justify-center shadow-lg shadow-blue-400/30">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+          </div>
+          <div>
+            <h1 className="text-xl font-bold bg-gradient-to-r from-specBlue to-blue-600 bg-clip-text text-transparent">
+              Navigation
+            </h1>
+            <p className="text-xs text-specGrey/70 mt-0.5">Explore features</p>
+          </div>
         </div>
-        <h2 className="text-xl font-bold text-specBlue">Menu</h2>
       </div>
 
       {/* Navigation Links */}
       <nav className="flex-1">
-        <ul className="space-y-2">
+        <ul className="space-y-3">
           {menuItems.map((item) => (
             <li key={item.path}>
               <Link
                 to={item.path}
                 className={`
-                  flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-200
+                  flex items-center gap-3 px-4 py-3.5 rounded-2xl font-medium transition-all duration-300
+                  group relative overflow-hidden
                   ${isActive(item.path)
-                    ? 'bg-gradient-to-r from-specBlue to-blue-600 text-white shadow-md shadow-specBlue/30'
-                    : 'text-specGrey hover:bg-specBlue/10 hover:text-specBlue hover:translate-x-1'
+                    ? 'bg-gradient-to-r from-specBlue to-blue-500 text-white shadow-xl shadow-blue-400/40'
+                    : 'text-specGrey hover:bg-gradient-to-r hover:from-blue-50 hover:to-white hover:text-specBlue hover:shadow-lg hover:shadow-blue-100/50'
                   }
                 `}
               >
-                <span className={isActive(item.path) ? 'text-white' : ''}>
+                {/* Active indicator */}
+                {isActive(item.path) && (
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-white/80 rounded-r-full shadow-sm"></div>
+                )}
+                
+                <span className={`
+                  ${isActive(item.path)
+                    ? 'text-white'
+                    : 'text-blue-400 group-hover:text-specBlue transition-colors'
+                  }
+                `}>
                   {item.icon}
                 </span>
-                <span className="flex-1">{item.label}</span>
+                <span className="flex-1 font-medium">{item.label}</span>
                 {item.badge && (
                   <span className={`
-                    px-2 py-0.5 text-xs font-semibold rounded-full
+                    px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-300
                     ${isActive(item.path)
-                      ? 'bg-white/20 text-white'
-                      : 'bg-red-500 text-white'
+                      ? 'bg-white/30 text-white backdrop-blur-sm'
+                      : 'bg-gradient-to-r from-red-400 to-red-500 text-white shadow-sm shadow-red-300/50 group-hover:scale-105'
                     }
                   `}>
                     {item.badge}
@@ -92,19 +112,37 @@ export default function Sidebar() {
       </nav>
 
       {/* Bottom Section */}
-      <div className="mt-auto pt-6 border-t border-specLightBlue/50">
-        <div className="bg-gradient-to-br from-specBlue/10 to-blue-100/50 rounded-xl p-4 border border-specBlue/20">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-specBlue to-blue-600 rounded-lg flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="mt-auto pt-8">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50/80 to-white p-5 shadow-xl shadow-blue-100/50 backdrop-blur-sm border border-white/50">
+          {/* Background decoration */}
+          <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-specBlue/10 to-blue-300/10 rounded-full"></div>
+          <div className="absolute -bottom-5 -left-5 w-16 h-16 bg-gradient-to-br from-blue-200/10 to-blue-100/10 rounded-full"></div>
+          
+          <div className="relative z-10 flex items-start gap-4">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-specBlue to-blue-500 flex items-center justify-center shadow-lg shadow-blue-400/30">
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <div>
-              <p className="text-xs font-semibold text-specBlue">Pro Tip</p>
-              <p className="text-xs text-specGrey">Stay organized daily</p>
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-specBlue mb-1">Pro Tip</p>
+              <p className="text-sm text-specGrey/80 leading-tight">
+                Review your expiring items daily to stay organized and avoid missing important deadlines.
+              </p>
             </div>
           </div>
+        </div>
+        
+        {/* User/Status section */}
+        <div className="mt-6 flex items-center justify-between px-2">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-specBlue"></div>
+            <div>
+              <p className="text-sm font-medium text-specBlue">Welcome back!</p>
+              <p className="text-xs text-specGrey/70">Last active: Today</p>
+            </div>
+          </div>
+          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
         </div>
       </div>
     </aside>
